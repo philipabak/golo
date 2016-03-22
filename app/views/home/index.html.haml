@@ -1,0 +1,95 @@
+#top
+  #target_reduction
+    .stat
+      .counter.recessed.clearfix
+        %span
+          = commafy @total_reduction
+      .counter_label mi
+      .counter_desc_upper
+        = @total_reduction_label.upcase
+        #what_is_this.rollover
+          %a
+            What is this?
+            %span
+              - if @grouping.prefix == 'uptown'
+                Each Uptown household reducing their driving by 20 miles per week for a year results in: 
+                %br
+                %ul
+                  %li 676,000 miles reduced
+                  %li 36,000 gallons of gas saved
+                  %li $152,000 saved at the gas pump
+                  %li 900,000 fewer pounds of carbon emissions.
+              - else
+                Just 5,000 housholds reducing how much they drive by 20 miles per week for a year results in:
+                %br
+                %ul
+                  %li 5.2 million miles reduced
+                  %li 275,000 gallons of gas saved
+                  %li 6.9 million fewer tons of carbon emissions
+
+  - if logged_in?
+    #logout
+      %div
+        = link_to 'View Dashboard', dashboard_path
+        = " | " 
+        = link_to 'Log Out', '/logout'        
+  - else
+    #signin
+      %div Sign In
+      - form_tag session_path do
+        #email
+          %label.secondary{:for  => 'email'} Email:
+          = text_field_tag 'email', @email
+        %div
+          %label.secondary{:for => 'password'} Password:
+          = password_field_tag 'password', nil
+          = submit_tag I18n.t('restful_authentication.log_in'), :class => 'button'
+        #rememberme
+          = check_box_tag 'remember_me', '1', @remember_me
+          %span.secondary Remember me
+#main
+  #homelogo=image_tag 'golo_icon.png'
+  #city
+    - if @grouping.prefix == 'uptown'
+      =link_to image_tag('mini/uptown.png'), "http://www.theuptown.net/index.html",:target=>"_blank"
+    - elsif @grouping.prefix == 'facebook'
+      =image_tag('f_logo.png', :width=>75, :style=>"vertical-align:middle")
+      =@grouping.name
+    - else
+      =@grouping.name
+  #mainstat.clearfix
+    .stat
+      .counter.recessed#total_miles_reduced= commafy @grouping.miles_reduced_city_total || '?'
+      .counter_label mi
+      .counter_desc="Reduced by #{@grouping.users.count} users as of #{Date.today.strftime('%m.%d.%y')}".upcase
+
+  #stats.clearfix
+    #centeringcontainer
+      %ul
+        %li
+          .stat
+            .counter.recessed= commafy @grouping.co2_reduced_city_total || '?'
+            .counter_label lbs
+            .counter_desc="LBS of CO2 reduced".upcase
+        %li
+          .stat
+            .counter.recessed= commafy @grouping.pollutants_reduced_city_total || '?'
+            .counter_label lbs
+            .counter_desc="air pollutants reduced".upcase
+        %li
+          .stat
+            .counter.recessed= commafy @grouping.gallons_reduced_city_total || '?'
+            .counter_label gal
+            .counter_desc="Gallons of gas saved".upcase
+        %li
+          .stat
+            .counter.recessed= commafy @grouping.dollars_reduced_city_total || '?'
+            .counter_label $
+            .counter_desc="dollars saved".upcase
+
+#footer
+  #learn_more
+    = link_to image_tag('learn_more.png', :class => 'nav_button'), learn_more_path
+    - if !logged_in?
+      = link_to image_tag('sign_up.png', :class => 'nav_button'), new_user_path, :id => 'signup'
+

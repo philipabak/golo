@@ -1,0 +1,41 @@
+%li.vehicle.clear_fix
+  = f.select :year_id, options_for_select(vehicle_years_for_select, f.object.year_id), {}, :class => 'year_select'
+  - if f.object.new_record?
+    = f.select :vehicle_make_id, [], {}, :class => "make_select", :disabled => true
+    = f.select :vehicle_model_id, [], {:prompt => "Select a model"}, :class => 'model_select', :disabled => true
+  - else
+    :javascript
+      // hack needed so livequery doesn't update the page on load...
+      skipUpdate = true;
+    = f.select :vehicle_make_id, makes_for_select(f.object), {}, :class => 'make_select'
+    = f.select :vehicle_model_id, models_for_select(f.object), {:prompt => "Select a model"}, :class => 'model_select'
+  = remove_link_unless_new_record f, "remove car"
+
+  %div.baseline.clear_fix.init_mileage_label
+    = f.label :initial_annual_mileage, 'How many miles do you drive this car each year?'
+    = f.text_field :initial_annual_mileage, :size => '6'
+    #mileage_help.rollover
+      %a
+        Don't know your annual mileage?
+        %span
+          Estimating your yearly mileage is easier than you think. You can:
+          %br
+          %br
+          \- Divide your mileage by the number of years you have owned each car
+          %br
+          %br
+          \- Check the pink slip for the mileage of a used car when you bought it
+          %br
+          %br
+          \- Check your oil change or auto service records
+          %br
+          %br
+          \- Check insurance or tax records of reported mileage
+          %br
+          %br
+          \- If all else fails, guess. You can always come back and update this information later.
+
+  = error_message_on f.object, :vehicle_make_id, :css_class => "form_error", :prepend_text => "Vehicle make "
+  = error_message_on f.object, :vehicle_model_id, :css_class => "form_error", :prepend_text => "Vehicle model "
+  = error_message_on f.object, :initial_annual_mileage, :css_class => "form_error", :prepend_text => "Initial mileage "
+

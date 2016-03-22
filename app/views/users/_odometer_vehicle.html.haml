@@ -1,0 +1,10 @@
+%li.clearfix
+  %label.rollover
+    %a{:href => vehicle_path(odometer_vehicle)}
+      = odometer_vehicle.short_name
+      %span
+        = "Fuel efficiency: #{odometer_vehicle.vehicle_model.miles_per_gallon} MPG"
+  = text_field_tag 'odometer_reading[mileage][]', nil, :size => 7
+- last_reading = odometer_vehicle.odometer_readings.last
+- if last_reading
+  %li{:class => 'odometer_date' + (last_reading.date < Date.today - 2.weeks ? ' too_old' : '')}= commafy "Last entry #{last_reading.mileage} on #{last_reading.date.strftime '%b %d'}"

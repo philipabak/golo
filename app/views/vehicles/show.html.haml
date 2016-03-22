@@ -1,0 +1,19 @@
+- javascript 'vehicles'
+
+#top= render :partial => "shared/header", :locals => {:title => 'Vehicle info'}
+
+#main.clearfix
+  #dashboardcontainer.clearfix
+    %h1= @vehicle
+
+    - form_for @vehicle do |vehicle_form|
+      - content_for :jstemplates do
+        = "var odometer_reading='#{generate_template(vehicle_form, :odometer_readings)}'"
+      .errorExplanation= vehicle_form.error_messages
+
+      Odometer readings:
+      %ul#odometer_readings
+        - vehicle_form.fields_for :odometer_readings do |reading_form|
+          = render :partial => 'odometer_reading', :locals => {:f => reading_form}
+      = link_to 'add reading', '#odometer_reading', :class => 'add_nested_item', :rel => 'odometer_readings'
+      .formsection= vehicle_form.submit 'Update odometer readings', :class => 'button'

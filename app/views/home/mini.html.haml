@@ -1,0 +1,26 @@
+#mini-title
+  =image_tag "mini/how_low.png"
+
+=image_tag "mini/golo.png"
+
+%p
+  Track how much you drive, how much money you save, and how your
+  travel behavior affects the environment.
+
+#mini-footer
+  =link_to "learn more", learn_more_path, :target=>"_top", :class=>"mini-link",:id=>"learn"
+  =link_to "sign up", signup_path, :target=>"_top", :class=>"mini-link",:id=>"sign-up"
+
+:javascript
+  var c=0;
+  setInterval(function() {
+    c++;
+    $("#mini-title img").fadeOut(400, function() {
+      if(c == 1) $("#mini-title img").attr("src", "/images/mini/hey_uptown.png");
+      else {
+        $("#mini-title img").attr("src", "/images/mini/how_low.png");
+        c = 0;
+      }
+      $("#mini-title img").fadeIn();
+    });
+  }, 5000);

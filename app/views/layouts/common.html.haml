@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title
+      Golo,
+      =@grouping.prefix
+    = stylesheet_link_tag 'common'
+    = stylesheet_link_tag 'mobile', :media => "only screen and (max-device-width: 480px)"
+    %meta{:name => 'viewport', :content => 'width=320'}
+    = javascript_include_tag 'jquery'
+    %link{:rel => 'apple-touch-icon', :href =>"/images/golo_icon.png"}
+    = javascript_include_tag 'application'
+    = yield :head
+    - javascript_tag do
+      = yield :jstemplates
+    = javascript_include_tag 'jquery.livequery'
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-16101213-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+  %body
+    #container
+      #view
+        - [:notice, :error, :message].each do |key|
+          - unless flash[key].blank?
+            %p{ :id => "flash_#{key}" }= flash[key] 
+        #title How Low Can you Go?
+
+        = yield
+
+        %div
+          - unless controller_name == "home" and action_name == "contact"
+            For site feedback, please
+            = link_to 'contact us', contact_path
+          - if @grouping.prefix == "uptown" and !(controller_name =="users" and action_name == "dashboard")
+            .travelchoice_footer=link_to image_tag("mini/travelchoice-logo.gif", :height=>"50"), "http://transformca.org/campaign/travelchoice",:target=>"_blank"
+          

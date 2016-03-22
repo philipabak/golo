@@ -1,0 +1,815 @@
+!pagewidth = 940px
+!twocol_columnwidth = 430px
+!pagepadding = 40px
+!countercolor = #55BCEB
+!golo_orange = #FF9900
+!golo_green = #8CC63F
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td
+  margin: 0
+  padding: 0
+  border: 0
+  outline: 0
+  font-size: 100%
+  vertical-align: baseline
+  background: transparent
+
+ol, ul
+  list-style: none
+
+
+body
+  line-height: 1
+  background-color: #000
+  color: #808285
+  font-family: Trebuchet MS, Helvetica, sans-serif
+  font-size: 14px
+
+a
+  color = !golo_orange
+  text-decoration: none
+
+a:hover
+  text-decoration: underline
+  
+img
+  border: none
+
+
+// COMMON...........................;
+
+#flash_notice
+  padding: 10px
+  font-size: 20px
+  color = !golo_green
+
+#flash_error
+  padding: 10px
+  font-size: 20px
+  color: red
+
+.clearfix:after
+  clear: both
+  content: "."
+  display: block
+  height: 0
+  visibility: hidden
+
+.notice
+  color: #fff
+
+.button
+  padding: 5px
+  background-color: #333
+  color = !golo_orange
+  font-size: 16px
+  border: 1px solid
+  border-color = !golo_orange
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  border-radius: 5px
+  cursor: pointer
+
+a.button:hover
+  text-decoration: none 
+
+.stat
+  margin: 10px 0 10px 0
+  min-width: 170px
+
+.counter                          
+  float: left
+  padding: 5px
+  background: #333
+  color = !countercolor
+  font-size: 35px
+  font-family: Verdana, Arial, Helvetica, sans-serif
+  text-align: center
+  min-width: 120px
+
+.recessed
+  border-top: 2px solid #222
+  border-left: 2px solid #222
+  border-right: 1px solid #444
+  border-bottom: 1px solid #444
+
+.counter_label
+  float: left
+  padding: 15px 0 0 5px
+  font-size: 25px
+  color: #333
+
+.white
+  color: white
+
+.counter_desc_upper
+  clear: left
+  padding: 5px 0 0 0
+  font-size: 11px
+
+.counter_desc
+  clear: left
+  padding: 5px 35px 0 0
+  font-size: 11px
+  text-align: center
+
+.secondary
+  font-size: 12px
+
+.rollover
+  font-size: 12px
+  a span
+    display: none
+.rollover:hover
+  a
+    text-decoration: none
+.rollover:hover span
+  display: block
+  position: absolute
+  padding: 10px
+  margin: 10px
+  z-index: 100
+  color: #000
+  background: #FFF
+
+//* LAYOUT............................;
+
+#view
+  margin: 40px auto
+  width = !pagewidth
+  padding = !pagepadding
+  border: 1px dashed #333
+  background: #000
+  position: relative
+
+#main, #footer, #top
+  clear: both
+  margin: 0 auto
+
+#top
+  width = !pagewidth
+  position: relative
+  
+#main
+  width = !pagewidth
+  
+#footer
+  text-align: center
+  padding: 20px 0 20px 0
+
+
+#header
+  padding: 20px 0 20px 0
+  position: relative
+#logo
+  float: left
+#uptown_logo
+  float: left
+  margin-left: 10px
+
+#toptitle
+  float: left
+  font-size: 50px
+  color: #fff
+  padding: 20px 0 5px 20px
+
+#subtitle
+  font-size: 90px
+  float: right
+  clear: both  
+  position: absolute
+  right: 0
+  top: 41px   
+  h2
+  
+//* HOME..........................;
+  
+#target_reduction
+  float: left
+
+#signin, #logout
+  position: absolute
+  right: 0px
+  top: -15px 
+
+#what_is_this
+  span
+    top: 100px
+    left: 0
+    width: 175px
+
+#signin .button
+  padding: 1px
+  font-size: 12px
+
+#email
+  margin: 0 0 5px 0
+
+#signin label
+  float: left
+  width: 65px
+  padding: 5px 0 0 0
+  color: #fff
+
+#email input, #password
+  width: 110px
+
+#rememberme
+  margin-left: 65px
+  
+#homelogo, #mainstat, #city, #stats ul
+  margin: 0 auto
+
+#homelogo
+  text-align: center
+  width: 300px
+
+#city, #mainstat
+  width: 225px
+
+#city
+  text-align: center
+  width: 100%
+  padding: 20px 0 10px 0
+  font-size: 50px
+  font-weight: bold
+  color: #fff
+  white-space: nowrap
+  text-transform: capitalize 
+
+#mainstat
+  padding: 0 0 10px 15px
+
+#mainstat .counter
+  width: 175px
+
+#total_miles_reduced
+  color = !golo_green
+
+#stats
+  padding: 10px 0 10px 0
+  border-top: 1px dashed #666
+  border-bottom: 1px dashed #666
+  height: 83px
+
+#centeringcontainer
+  float: left
+  left: 50%
+  position: relative
+
+
+#stats ul
+  float: left
+  left: -50%
+  position: relative
+
+
+#stats li
+  display: block
+  float: left
+  padding-right: 20px
+  min-width: 170px
+  
+  
+#footer a
+  margin-right: 10px
+
+
+//* USER/NEW...........................;  
+
+#profile_form
+  padding: 0 0 0 40px
+  .form_input
+    padding: 0 0 20px 0
+    width: 600px     
+  p    
+    width: 600px
+  label
+    float: left
+    color: #fff
+    width: 250px
+  input, select
+    float: left
+    margin-left: 30px
+  .signin_button
+    margin-left: 300px
+    margin-top: 10px
+  .profile_step
+    font-size: 40px
+    float: left
+    margin-right: 20px
+    color: white
+    clear: left
+  .formsection
+    position: relative
+    padding: 20px 0 0 0     
+    float: left
+  .vehiclewrapper
+    margin-left: 44px    
+  .field_margin    
+    margin-left: 280px
+    float: left
+  .form_error_main
+    color: #c53
+  .form_error
+    clear: both
+    font-size: 10px
+    color: #f33
+    width: 200px
+    text-transform: uppercase
+  #how_will_info_be_used
+    span
+      width: 175px
+    position: absolute
+    top: 55px
+    right: -90px
+  .major
+    margin-bottom: 10px
+    font-size: 18px
+    color: white
+  #vehicles
+    padding: 0px
+    li
+      border: 1px solid #8CC63F
+      clear: both
+      padding: 10px
+      width: 700px
+      display: table
+    .baseline
+      margin-top: 10px      
+    label
+      color: #fff
+      line-height: 1.25
+      font-size: 14px
+      margin-right: 10px      
+      width: 350px
+    input
+      font-size: 12px        
+    .vehicle
+      position: relative
+      margin-bottom: 10px
+      #mileage_help
+        float: right
+        margin-top: 3px
+        span
+          top: -150px
+          left: 720px
+          width: 175px
+      .remove
+        float: right
+      .init_mileage_label
+        clear: both
+      .make_select
+        max-width: 150px
+      .model_select
+        max-width: 150px
+
+.household_comment
+  position: absolute
+  width: 150px
+  left: 300px
+
+.warning
+  display: block
+  margin-left: 280px
+  margin-top: 5px
+  display: none
+  color: red
+  clear: left
+
+#uptown_new_user_note
+  position: absolute
+  top: 40px
+  right: 40px
+  border: 1px solid #fff
+  padding: 10px
+  width: 300px
+
+//* LEARN MORE...........................;
+
+#why, #how
+  color: #fff
+  line-height: 24px
+  
+#why
+  float: left
+  width = !twocol_columnwidth
+  padding-right: 40px 
+  border-right: 1px dashed #666
+  
+#how
+  margin-left: 510px
+  width = !twocol_columnwidth
+
+#how a
+  float: right
+  
+#emissions
+  float: right
+
+#why h3, #how h3
+  color: #8cf
+
+  
+//* DASHBOARD............................;
+
+#overlay
+  position: fixed
+  z-index: 10
+  top: 0px
+  left: 0px
+  height: 100%
+  width: 100%
+  background: black
+  opacity: 0.75
+  filter: alpha(opacity='75')
+  display: none
+
+#modaltext
+  position: absolute
+  left: 300px
+  width: 300px
+  z-index: 10000
+  background: black
+  color = !golo_green
+  padding: 20px
+  display: none
+
+#update_baseline_text
+  display: none
+  position: absolute
+  bottom: 20px
+  right: 0px
+  width: 225px
+  border: 1px solid #ccc
+  padding: 10px
+  background: black
+  p
+    margin-bottom: 5px
+
+#dashboardcontainer
+  border: 1px dashed #666
+*:first-child+html #dashboardcontainer
+  border-bottom: none
+  
+#dashboard h3, #resources h3
+  margin: 0 0 15px 0
+  
+#profileheader
+  position: absolute 
+  top: 105px
+  right: 40px
+
+#profileheader #user
+  font-size: 20px
+  color = !countercolor
+  
+#dashboard
+  width: 740px
+  float: left
+  border-right: 1px dashed #666
+
+#resources
+  margin-left: 740px
+  padding: 20px
+  li
+    margin-top: 10px
+  #slideshow
+    position: absolute
+    bottom: 60px
+    
+#odometer
+  z-index: 200
+  background: black
+  width: 259px
+  min-height: 261px
+  float: left
+  padding: 15px
+  position: relative
+  input
+    float: right
+  div
+    margin-bottom: 10px
+  li
+    span
+      width: 143px
+  #odo_note
+    font-size: 10px
+
+.normalstate
+  border-right: 1px dashed #666
+
+.modalborder
+  border: 5px solid #888
+  
+#odometer .button
+  float: right
+
+#odometer #vehicles
+  margin: 0 0 20px 0
+  
+.odometer_date
+  font-size: 11px
+  margin-bottom: 5px
+  margin-right: 1px
+  text-align: right
+  clear: right
+.too_old
+  color: red
+
+#weekly_household_mileage
+  
+#average
+  margin-left: 289px
+  width: 409px
+  padding: 20px
+  position: absolute
+
+*:first-child+html #average
+  margin-left: 0
+
+#rating
+  width: 120px
+  margin-left: 285px
+  text-align: center
+
+#baselinestat
+  margin-top: 20px
+  width: 355px
+  clear: both
+  ul
+    margin-top: 10px
+    margin-bottom: 10px
+  li
+    color = !golo_orange
+    font-size: 20px
+
+.baseline
+  font-size: 15px
+  margin-top: 5px
+  
+.baseline.worse
+  color: #ff3333
+  
+.baseline.better
+  color: #a1d05f
+  
+.baseline.no_change
+  color: #fff20b
+  
+#visuals
+  position: relative
+  clear: both
+  padding: 20px
+  border-top: 1px dashed #666
+  
+li.tab
+  float: left
+  position: relative
+  top: 2px
+
+#tabs
+  margin-bottom: 20px
+  margin-left: 23px
+*:first-child+html #tabs
+  margin-left: 27px
+
+li.tab
+  border: 1px solid #333
+  padding: 10px 10px 5px 10px
+  background: #333
+  -moz-border-radius-topleft: 10px
+  -moz-border-radius-topright: 10px
+  -webkit-border-radius-topleft: 10px
+  -webkit-border-radius-topright: 10px
+  border-radius-topleft: 10px
+  border-radius-topright: 10px  
+
+li.current
+  background: #000
+  border-bottom: #000
+
+li.tab a
+  color: #999
+
+li.tab a:hover
+  text-decoration: none
+  color: #ccc
+  
+#dataview
+  height: 300px
+  display: none
+  clear: both
+  table
+    border: 1px solid #333
+    width: 100%
+    margin-top: 32px
+  th
+    font-size: 12px
+    text-align: center
+    padding: 5px
+  th.rowlabel
+    text-align: left
+    vertical-align: middle
+  td
+    padding: 5px
+    text-align: right
+    font-size: 21px
+    width: 108px
+    background-color: #333
+    color = !countercolor
+  td.rowlabel
+    text-align: left
+    background-color: #000
+    background-repeat: no-repeat
+    color: #fff
+    padding-left: 33px
+    min-width: 205px
+  .counter
+    font-size: 16px
+    width: 80px
+*:first-child+html #dataview td
+  font-size: 16px
+
+
+#timeview
+  width: 606px
+  #timechart
+    width: 500px
+    height: 300px
+    clear: left
+html>/**/body #timeview #timechart
+  margin-top: 31px
+*:first-child+html #timeview #timechart
+  margin-top: 0px
+
+.descriptiion
+  border-width: 1px
+  border-style: solid
+  padding: 2px
+  text-transform: uppercase
+  font-size: 7pt
+  background: black
+#your_miles_week
+  color = !countercolor
+  border-color = !countercolor
+  margin-left: 5px
+#your_baseline
+  color = #f90
+  border-color = #f90
+#avg_golo_user
+  color: #ff0
+  border-color: #ff0
+
+#legend
+  font-size: 12px
+  position: absolute
+  left: 228px
+  top: 29px
+  ul
+    float: left
+    display: inline
+    list-style-type: none
+  li
+    float: left
+    margin-right: 13px
+  .color_box
+    width: 15px
+    height: 15px
+  .descriptiion
+    border-width: 1px
+    border-style: solid
+    padding: 2px
+  #your_miles_week
+    color = !countercolor
+    border-color = !countercolor
+    margin-left: 5px
+  #your_baseline
+    color = !golo_orange
+    border-color = !golo_orange
+  #avg_golo_user
+    color: yellow
+    border-color: yellow
+*:first-child+html #legend
+  font-size: 10px
+  left: 235px
+  top: 55px
+
+#chartstats
+  position: absolute
+  bottom: 22px
+  right: 8px
+  width: 200px
+  p
+    font-size: 16px
+  li.data
+    background-repeat: no-repeat
+    margin-top: 12px
+  div
+    background-color: #333
+    color = !countercolor
+    font-family: Verdana, Arial, Helvetica, sans-serif
+    font-size: 24px
+    height: 26px
+    margin-left: 35px
+    padding-left: 5px
+    width: 153px
+  .label
+    font-size: 12px
+    padding-left: 35px
+    margin-top: 2px
+
+.legendLabel
+  color: #fff
+
+#chartstats
+  float: left
+
+#terms
+  padding: 10px
+  label
+    padding-left: 30px
+    width: 70%
+  #terms_and_conditions
+    padding-left: 50px
+    padding-bottom: 10px
+    font-family: verdana
+    font-size: 8pt
+    width: 80%
+    line-height: 10pt
+    #terms_title
+      font-size: 10pt
+      font-weight: bold
+      line-height: 12pt
+
+.form-item
+  padding-top: 10px
+  label
+    float: left
+    width: 200px
+    .required
+      color: red
+      font-size: 14px
+
+#mini-container
+  width: 200px
+  height: 250px
+  background: transparent
+  text-align: center
+  background: transparent url('../images/mini/sky_back.png') no-repeat 0px 0px scroll
+  padding: 10px
+  padding-top: 20px
+  font-size: 12px
+  color: #000
+
+#mini-container p
+  margin-top: 10px
+  margin-left: 10px
+  margin-right: 10px
+
+#mini-title
+  color = !golo_orange
+  font-size: 32px
+  font-weight: bold
+  text-shadow: #556 1px 1px
+  padding-bottom: 0
+  letter-spacing: -2px
+
+#mini-footer
+  display: table
+  width: 100%
+  clear: both
+  font-size: 16px
+  font-weight: bold
+  padding-top: 10px
+  margin-left: 25px
+
+.mini-link
+  width: 40%
+  float: left
+  padding-top: 25px
+  height: 40px
+  color: #000
+  text-transform: uppercase
+  font-size: 10px
+  line-height: 20px
+
+#learn
+  background: transparent url('../images/mini/learn.png') no-repeat center top scroll
+
+#sign-up
+  background: transparent url('../images/mini/signup.png') no-repeat center top scroll
+
+.travelchoice_footer
+  position: absolute
+  right: 40px
+  bottom: 40px

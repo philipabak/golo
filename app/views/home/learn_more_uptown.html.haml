@@ -1,0 +1,30 @@
+#top=render :partial => "shared/header", :locals => { :title => '', :subtitle => 'GoLo'}
+#main.clearfix
+  #why
+    %h3 Why GoLo?
+    %div
+      How much you drive affects your health, the environment, and your household costs. 
+      Driving accounts for nearly half of the carbon emissions in the Bay Area and is a primary 
+      source of the air pollution that causes asthma and other respiratory diseases. And as gas 
+      prices continue to rise, driving can take up a larger and larger portion of a household’s income, 
+      leaving less for housing, education and childcare, and other daily needs, not to mention time wasted in traffic.
+      %br
+      %br
+      As an Uptown resident, you’ve already made the decision to live in a place where you can walk, bike, 
+      and take transit for most of your daily needs. You have many options and lots of great places to go. 
+      GoLo can help you set goals to reduce how much you drive and take advantage of these options - 
+      and it will track how well you’re doing, how much money you’re saving, and how driving less helps the environment. 
+      GoLo is a fun way to track your progress towards a greener and healthier lifestyle. Drive less, spend less, live more!
+  #how
+    %h3 How Does GoLo Work?
+    %div
+      GoLo allows your household to easily track and explore the impacts of the miles you drive 
+      (Vehicle Miles Traveled, or VMT). Your household dashboard displays your driving data on your computer or smart phone. 
+      You simply enter odometer readings and watch how driving less reduces carbon emissions and pollution, 
+      and saves you money at the gas pump. You can compare your progress to other users and see how everyone 
+      at the Uptown is doing. We've made the race to reduce your energy use, emissions, and driving costs as 
+      easy as 1-2-3: 1) Create an account. 2) Enter your car data. 3) Start tracking how much you drive each week. 
+      Start today and see how low you can go!
+
+    %div.clearfix
+      = link_to 'Start Today!', new_user_path, :class => 'button'

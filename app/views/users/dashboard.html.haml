@@ -1,0 +1,121 @@
+- javascript 'jquery.flot', 'jquery.cycle/jquery.cycle.all', 'dashboard'
+- content_for :head do
+  <!--[if IE]><script language="javascript" type="text/javascript" src="/javascripts/excanvas.min.js"></script><![endif]-->
+
+:javascript
+  time_chart_points = #{@time_chart_points};
+  baseline_level = #{@baseline_level};
+  average_golo = #{@average_golo};
+  ymin = #{@ymin};
+  ymax = #{@ymax};
+
+- if current_user.vehicles.map(&:odometer_readings).flatten.empty?
+  :javascript
+    $(document).ready(function() {
+      $('.modal').show();
+      $('#pastreadings').hide();
+      $('#odometer').addClass('modalborder');
+      $('#odometer').removeClass('normalstate');
+    });
+
+#overlay.modal
+
+#top=render :partial => "shared/header", :locals => { :title => 'MyGolo'}
+#profileheader
+  #user= "#{current_user.title_possessive} household".upcase
+  .secondary= link_to "Update Your Profile", edit_user_path(current_user)
+  - if logged_in?
+    .secondary= link_to 'Log Out', '/logout'
+- flash.each do |name, msg|
+  = content_tag :div, msg, :id => "flash_#{name}"
+
+#main.clearfix
+  #dashboardcontainer.clearfix
+    #dashboard
+      #odometer.normalstate
+        #modaltext.modal.modalborder Your profile is almost complete. Just enter the current odometer readings for each car in your household in the panel to the left.
+        %h3 ODOMETERS
+        #pastreadings You can enter past odometer readings by clicking on a car.
+        - form_tag '/users/create_odometer_readings' do
+          %ul#vehicles.clearfix= render :partial => 'odometer_vehicle', :collection => current_user.vehicles
+          = submit_tag 'Update Readings', :class => 'button', :id => 'odometer_button'
+        #odo_note
+          You can also use your smart phone to enter your odometer readings
+      #average.clearfix
+        %h3 HOUSEHOLD AVERAGE
+        #weekly_household_mileage
+          %div
+            .counter.recessed= commafy @weekly_household_mileage
+            .counter_label.white="miles/week"
+          #rating
+            - if @baseline_percentage
+              - if @baseline_percentage > 0
+                = image_tag 'sad.png'
+                .baseline.worse= "#{@weekly_household_mileage - current_user.initial_weekly_mileage} MILES/WEEK (#{@baseline_percentage}%) ABOVE BASELINE"
+              - elsif @baseline_percentage < 0
+                = image_tag 'happy.png'
+                .baseline.better= "#{current_user.initial_weekly_mileage - @weekly_household_mileage} MILES/WEEK (#{@baseline_percentage.abs}%) BELOW BASELINE"
+              - else
+                = image_tag 'meh.png'
+                .baseline.no_change Same as baseline
+        #baselinestat
+          %h3
+            #{current_user.title_possessive} HOUSEHOLD BASELINE
+          %p.secondary.white Before GoLo, you drove:
+          .household_comment
+            - if @baseline_percentage
+              - if @baseline_percentage > 0
+                .baseline.worse= "Oh no! You're driving more than before GoLo."
+              - elsif @baseline_percentage < 0
+                .baseline.better= "Nice job! You're driving less than before GoLo."
+          %ul
+            %li= commafy "#{current_user.initial_weekly_mileage} miles/week"
+            %li= commafy "#{current_user.initial_annual_mileage} miles/year"
+          #how_to_update_baseline.rollover
+            %a
+              How do I update my baseline? >
+            #update_baseline_text
+              %p <b>Update your baseline:</b>
+              %p
+                It's easiest to track your
+                progress if you have a good estimate of your baseline
+                yearly mileage. You can update your baseline with
+                more accurate information at any time.
+              = golo_link_to 'Update now!', edit_user_path(current_user)
+
+      #visuals
+        %ul#tabs
+          %li#timeview_tab.current.tab= link_to 'CHART VIEW', "#"
+          %li#dataview_tab.tab= link_to 'DATA VIEW', "#"
+        #dataview= render :partial => 'data_table'
+        #timeview= render :partial => 'time_chart'
+
+    #resources
+      %h3 RESOURCES
+      %ul
+        %li= golo_link_to 'Transit Information', 'http://511.org/', :target => '_blank'
+        - if @grouping.prefix == "uptown"
+          %li= golo_link_to 'TravelChoice', 'http://transformca.org/campaign/travelchoice', :target => '_blank'
+          %li= golo_link_to 'The Uptown', 'http://www.theuptown.net/index.html', :target => '_blank'
+          %li= golo_link_to 'BART', 'http://www.bart.gov', :target => '_blank'
+          %li= golo_link_to 'NextBus', 'http://www.actransit.org/rider-info/realtime/', :target => '_blank'
+          %li= golo_link_to 'East Bay Ferries', 'http://www.eastbayferry.com/', :target => '_blank'
+          %li= golo_link_to 'Transit and Trails', 'http://www.transitandtrails.org/', :target => '_blank'
+        - else
+          %li= golo_link_to 'OneBayArea', 'http://onebayarea.org/', :target=>'_blank'
+          %li= golo_link_to 'Berkeley Climate Action Plan', 'http://www.berkeleyclimateaction.org/', :target => '_blank'
+          %li= golo_link_to 'Your Walk Score', 'http://www.walkscore.com/', :target => '_blank'
+          %li= golo_link_to 'Regional Planning', 'http://www.mtc.ca.gov/planning/', :target => '_blank'
+          %li= golo_link_to 'Transform', 'http://transformca.org/', :target => '_blank'
+          %li= golo_link_to 'Livable Berkeley', 'http://www.livableberkeley.org/', :target => '_blank'
+        %li= golo_link_to 'Golometrics', 'http://www.golometrics.com/', :target => '_blank'
+
+      #slideshow
+        - if @grouping.prefix == 'uptown'
+          #ad= image_tag 'ads/uptown/ad1.png', :width => 168, :height => 81
+          #ad= link_to(image_tag('ads/uptown/ad2.png', :width => 168, :height => 81),"http://transformca.org/campaign/travelchoice", :target => '_blank')
+          #ad= link_to(image_tag('ads/uptown/ad3.png', :width => 168, :height=> 81), 'http://www.walkscore.com/', :target => '_blank')
+        - else
+          #ad= image_tag 'ads/ad1.png', :width => 168, :height => 81
+          #ad= image_tag 'ads/ad2.png', :width => 168, :height => 81
+          #ad= link_to(image_tag('ads/ad3.png', :width => 168, :height=> 81), 'http://www.walkscore.com/', :target => '_blank')

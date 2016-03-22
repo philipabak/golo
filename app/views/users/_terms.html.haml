@@ -1,0 +1,15 @@
+- if @grouping.prefix == "uptown"
+  = form.hidden_field :accept_terms, :value=>"1"
+- else
+  #terms{:style=>"clear:both;"}
+    #terms_and_conditions.clearfix
+      #terms_title Terms and Conditions:
+      The Receiving Party agrees that the tool concept, technology, and design for GoLo VMT is Confidential Information and is considered confidential and proprietary to the Disclosing Party, Golometrics, LLC. This Agreement also includes a restriction to compete with Golometrics in the specific capacity of measuring, tracking and reporting on individual VMT or other personal metrics for resource consumption in any State over the next 5 years, specifically as it relates to web and mobile tools used within municipalities, corporations or other institutions. 
+
+    .form_input.clearfix
+      = form.check_box :accept_terms
+      = form.label :accept_terms, 'I accept the above terms and conditions'
+      = error_message_on @user, :accept_terms, :css_class => "form_error"
+
+%br
+%br

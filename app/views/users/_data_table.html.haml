@@ -1,0 +1,41 @@
+%table
+  %tr
+    %th.rowlabel RESOURCES
+    %th YOUR TOTAL
+    %th
+      AVG.
+      =@grouping.prefix.upcase
+      USER
+    %th
+      =@grouping.prefix.upcase
+      TOTAL
+  %tr
+    %td.rowlabel{:style => "background-image:url('/images/data_miles.png')"}
+      Miles Reduced
+    %td= commafy @miles_reduced_total
+    %td= commafy @grouping.miles_reduced_average || '?'
+    %td= commafy commafy @grouping.miles_reduced_city_total || '?'
+  %tr
+    %td.rowlabel{:style => "background-image:url('/images/data_co2.png')"}
+      CO2 Reduced (lbs)
+    %td= commafy @co2_reduced_total
+    %td= commafy @grouping.co2_reduced_average || '?'
+    %td= commafy @grouping.co2_reduced_city_total || '?'
+  %tr
+    %td.rowlabel{:style => "background-image:url('/images/data_pollutants.png')"}
+      Pollutants Reduced (lbs)
+    %td= commafy @pollutants_reduced_total
+    %td= commafy @grouping.pollutants_reduced_average || '?'
+    %td= commafy @grouping.pollutants_reduced_city_total || '?'
+  %tr
+    %td.rowlabel{:style => "background-image:url('/images/data_gallons.png')"}
+      Gallons of Gas Saved
+    %td= commafy @gallons_reduced_total
+    %td= commafy @grouping.gallons_reduced_average || '?'
+    %td= commafy @grouping.gallons_reduced_city_total || '?'
+  %tr
+    %td.rowlabel{:style => "background-image:url('/images/data_dollars.png')"}
+      Dollars Saved on Gas
+    %td= commafy @dollars_reduced_total
+    %td= commafy @grouping.dollars_reduced_average ? "$#{@grouping.dollars_reduced_average}" : '?'
+    %td= commafy @grouping.dollars_reduced_city_total ? "$#{@grouping.dollars_reduced_city_total}" : '?'

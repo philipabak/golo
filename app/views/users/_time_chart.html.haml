@@ -1,0 +1,27 @@
+#timechart
+#legend
+  %ul.clearfix
+    %li 
+      /.color_box#your_miles_week
+      .descriptiion#your_miles_week your miles/week
+/
+  <div style="border:1px solid green;padding:1px"><div style="width:4px;height:0;border:5px solid #55BCEB;overflow:hidden"></div></div></td><td class="legendLabel">your miles/week</td></tr><tr><td class="legendColorBox"><div style="border:1px solid green;padding:1px"><div style="width:4px;height:0;border:5px solid #FF9900;overflow:hidden"></div></div></td><td class="legendLabel">your baseline</td></tr><tr><td class="legendColorBox"><div style="border:1px solid green;padding:1px"><div style="width:4px;height:0;border:5px solid yellow;overflow:hidden"></div></div></td><td class="legendLabel">avg GoLo user</td></tr></tbody>
+
+#chartstats
+  %p HOUSEHOLD TOTALS
+  %ul
+    %li.data{:style => "background-image:url('/images/data_miles.png')"}
+      .recessed= commafy @miles_reduced_total
+    %li.label miles reduced
+    %li.data{:style => "background-image:url('/images/data_co2.png')"}
+      .recessed= commafy @co2_reduced_total
+    %li.label lbs. of Co2 reduced
+    %li.data{:style => "background-image:url('/images/data_pollutants.png')"}
+      .recessed= commafy @pollutants_reduced_total
+    %li.label lbs. of air Pollutants reduced
+    %li.data{:style => "background-image:url('/images/data_gallons.png')"}
+      .recessed= commafy @gallons_reduced_total
+    %li.label Gallons of gas saved
+    %li.data{:style => "background-image:url('/images/data_dollars.png')"}
+      .recessed= commafy @dollars_reduced_total
+    %li.label Dollars saved on gas

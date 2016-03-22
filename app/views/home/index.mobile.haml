@@ -1,0 +1,47 @@
+#top
+  - unless logged_in?
+    #signin
+      - form_tag session_path do
+        .form_line
+          %label.secondary{:for  => 'email'} Email:
+          = text_field_tag 'email', @email
+        .form_line
+          %label.secondary{:for => 'password'} Password:
+          = password_field_tag 'password', nil
+        .form_line
+          %label.secondary{:for => 'remember_me'} Remember me:
+          = check_box_tag 'remember_me', '1', @remember_me
+          = submit_tag I18n.t('restful_authentication.log_in'), :class => 'button'
+
+#main
+  #stats.clearfix
+    #centeringcontainer
+      %h2{:style => "text-align: center; text-transform: capitalize;"}=@grouping.name
+      %ul
+        %li
+          .stat
+            .counter.recessed#total_miles_reduced= commafy @grouping.miles_reduced_city_total || '?'
+            .counter_label mi
+            .counter_desc="Reduced by #{@grouping.users.count} users as of #{Date.today.strftime('%m.%d.%y')}".upcase
+        %li
+          .stat
+            .counter.recessed= commafy @grouping.co2_reduced_city_total || '?'
+            .counter_label lbs
+            .counter_desc="LBS of CO2 reduced".upcase
+        %li
+          .stat
+            .counter.recessed= commafy @grouping.pollutants_reduced_city_total || '?'
+            .counter_label lbs
+            .counter_desc="air pollutants reduced".upcase
+        %li
+          .stat
+            .counter.recessed= commafy @grouping.gallons_reduced_city_total || '?'
+            .counter_label gal
+            .counter_desc="Gallons of gas saved".upcase
+        %li
+          .stat
+            .counter.recessed= commafy @grouping.dollars_reduced_city_total || '?'
+            .counter_label $
+            .counter_desc="dollars saved".upcase
+
+

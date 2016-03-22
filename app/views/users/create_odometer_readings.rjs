@@ -1,0 +1,1 @@
+page[:weekly_household_mileage].replace_html @weekly_household_mileage.to_s

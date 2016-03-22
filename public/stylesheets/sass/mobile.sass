@@ -1,0 +1,137 @@
+!pagewidth = 250px
+!pagepadding = 0px
+!countercolor = #55BCEB
+!golo_orange = #FF9900
+!golo_green = #8CC63F
+
+body
+  font-family: Helvetica  
+  font-size: 14px
+  margin: 0               /* Amount of negative space around the outside of the body */
+  padding: 0              /* Amount of negative space around the inside of the body */
+  background: black
+  color: white
+  margin: 0px auto
+  width = !pagewidth
+
+a
+  color = !golo_orange
+  text-decoration: none
+  font-size: 12px
+
+#home
+  img
+    width: 50px
+    padding-right: 5px
+  color: #888
+  text-transform: uppercase
+  font-weight: bold
+
+#top
+  clear: both
+  padding-bottom: 5px
+  margin-bottom: 5px
+  border-bottom: 3px dotted #888
+  display: table
+  
+#signin
+  .form_line
+    clear: both
+    label
+      width: 80px
+      float: left
+    input[type=text]
+      width: 120px
+      float: left
+    input[type=password]
+      width: 120px
+      float: left
+    input[type=submit]
+      width: 70px
+      float: left
+    input[type=checkbox]
+      width: 20px
+      float: left
+  clear: both
+
+ol, ul
+  list-style: none
+
+.counter     
+  float: left                     
+  padding: 5px
+  background: #333
+  color = !countercolor
+  font-size: 16px
+  font-family: Verdana, Arial, Helvetica, sans-serif
+  text-align: center
+  min-width: 120px
+
+.recessed
+  border-top: 2px solid #222
+  border-left: 2px solid #222
+  border-right: 1px solid #444
+  border-bottom: 1px solid #444
+
+.counter_label
+  float: left
+  padding: 15px 0 0 5px
+  font-size: 14px
+  color: #333
+
+.counter_desc_upper
+  clear: left
+  padding: 5px 0 0 0
+  font-size: 10px
+
+.counter_desc
+  clear: left
+  padding: 5px 35px 0 0
+  font-size: 10px
+  text-align: center
+
+#chartstats
+  width: 200px
+  p
+    font-size: 16px
+  li.data
+    background-repeat: no-repeat
+    margin-top: 12px
+  div
+    background-color: #333
+    color = !countercolor
+    font-family: Verdana, Arial, Helvetica, sans-serif
+    font-size: 16px
+    height: 24px
+    margin-left: 35px
+    padding-left: 5px
+    width: 100px
+  .label
+    font-size: 12px
+    padding-left: 35px
+    margin-top: 2px
+
+#flash_notice
+  font-size: 12px
+  color = !golo_green
+
+#flash_message
+  font-size: 12px
+  color = !golo_green
+
+#flash_error
+  font-size: 12px
+  color: red
+
+#rating
+  img
+    vertical-align: top
+
+.baseline.worse
+  color: #ff3333
+  
+.baseline.better
+  color: #a1d05f
+  
+.baseline.no_change
+  color: #fff20b

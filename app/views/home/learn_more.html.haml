@@ -1,0 +1,36 @@
+#top=render :partial => "shared/header", :locals => { :title => 'Beta', :subtitle => 'GoLo'}
+#main.clearfix
+  #why
+    %h3 Why GoLo?
+    %div
+      In 2006, Berkeley voters issued a call to climate action by
+      overwhelmingly endorsing ballot Measure G. The mandate was
+      simple: Reduce Berkeley's greenhouse gas (GHG) emissions by
+      33%
+      =image_tag 'emissions_pie_chart.png', :id => 'emissions'
+      by 2020 and 80% by the year 2050. Nearly 50% of our GHG
+      emissions come from our cars. To meet City goals, and new
+      state regulations, we need to drive less. This will reduce
+      GHG emissions and other harmful pollutants, save energy and
+      reduce our dependence on foreign oil, and save households
+      money. We can all do our part by driving less - GoLo is a fun
+      way to set your own target and track your progress towards a
+      greener and healthier lifestyle. Drive less, spend less, live
+      more!
+  #how
+    %h3 How Does GoLo Work?
+    %div
+      GoLo allows your household to easily track and explore the
+      impacts of the miles you drive (Vehicle Miles Traveled, or
+      VMT). Your household dashboard displays your driving data on
+      your computer or smart phone. You simply enter odometer
+      readings and watch how driving less reduces carbon emissions
+      and pollution, and saves you money at the gas pump. You can
+      compare your progress to other users and the City. We've made
+      the race to reduce your energy use, emissions, and driving
+      costs as easy as 1-2-3: 1) Create an account. 2) Enter your
+      car data. 3) Start tracking how much you drive each week.
+      Start today!
+
+    %div.clearfix
+      = link_to 'Start Today!', new_user_path, :class => 'button'

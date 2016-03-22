@@ -1,0 +1,17 @@
+- if @grouping.prefix == "uptown"
+  #header.clearfix
+    #logo=link_to image_tag('golo_icon_small.png'), root_url
+    #uptown_logo=link_to image_tag('mini/uptown.png', :height=>"75"), "http://www.theuptown.net/index.html",:target=>"_blank"
+    #toptitle
+      %h1=title
+    - if defined? subtitle
+      #subtitle
+        %h2=subtitle
+- else
+  #header.clearfix
+    #logo=link_to image_tag('golo_icon_small.png'), root_url
+    #toptitle
+      %h1=title
+    - if defined? subtitle
+      #subtitle
+        %h2=subtitle

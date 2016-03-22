@@ -1,0 +1,31 @@
+#top=render :partial => "shared/header", :locals => { :title => 'Contact Us'}
+#content-area
+  %div 
+    You can send vmt a message using the contact form below.
+  -form_tag(contact_path, :method=>"post") do
+    .form-item#edit-name-wrapper
+      %label{ :for=>"edit-name" }
+        Your name:
+        %span.required *
+      %input.form-text.required{ :maxlength=>255, :name=>"name", :id=>"edit-name", :size=>60}
+    .form-item#edit-mail-wrapper
+      %label{ :for=>"edit-mail"}
+        Your e-mail address:
+        %span.required *
+      %input.form-text.required{ :maxlength=>255, :name=>"mail", :id=>"edit-mail", :size=>60}
+    .form-item#edit-subject-wrapper
+      %label{ :for=>"edit-subject"}
+        Subject:
+        %span.required *
+      %input.form-text.required{ :maxlength=>255, :name=>"subject", :id=>"edit-subject", :size=>60}
+    .form-item#edit-message-wrapper
+      %label{ :for=>"edit-message"}
+        Message:
+        %span.required *
+      %textarea.form-textarea.resizable.required{ :cols=>60, :rows=>5, :name=>"message", :id=>"edit-message"}
+    .form-item#edit-copy-wrapper
+      %input.form-checkbox{ :type=>"checkbox", :value=>1, :name=>"copy", :id=>"edit-copy"}
+      %label{ :for=>"edit-copy"}
+        Send yourself a copy:
+    .form-item#edit-submit-wrapper
+      %input.form-submit{ :type=>"submit", :value=>"Send e-mail", :id=>"edit-submit", :name=>"op"}

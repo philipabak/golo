@@ -1,0 +1,8 @@
+var modelsForMake = new Array(<%= @vehicle_makes.size %>);
+
+<% @vehicle_makes.each_with_index do |make, i| -%>
+  modelsForMake['<%= make.name %>'] = new Array(<%= make.vehicle_models.size %>);
+  <% make.vehicle_models.sort_by(&:name).each_with_index do |model, j| -%>
+    modelsForMake['<%= make.name %>'][<%= j %>] = new Option('<%= model.name %>', <%= model.id %>);
+  <% end %>
+<% end %>

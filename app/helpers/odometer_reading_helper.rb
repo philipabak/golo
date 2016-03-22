@@ -1,0 +1,2 @@
+module OdometerReadingHelper
+end

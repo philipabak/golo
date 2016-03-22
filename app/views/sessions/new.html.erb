@@ -1,0 +1,18 @@
+<h1><%= I18n.t('restful_authentication.log_in') %></h1>
+
+<% form_tag session_path do -%>
+<p><%= label_tag 'email', I18n.t('restful_authentication.email') %><br />
+<%= text_field_tag 'email', @email %></p>
+
+<p><%= label_tag 'password', I18n.t('restful_authentication.password') %><br/>
+<%= password_field_tag 'password', nil %></p>
+
+<!-- Uncomment this if you want this functionality
+<p><%= label_tag 'remember_me', I18n.t('restful_authentication.remember_me') %>
+<%= check_box_tag 'remember_me', '1', @remember_me %></p>
+-->
+
+<p><%= link_to I18n.t('restful_authentication.remember_password_link'), password_reset_request_path %></p>
+
+<p><%= submit_tag I18n.t('restful_authentication.log_in') %></p>
+<% end -%>

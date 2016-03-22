@@ -1,0 +1,3 @@
+page.insert_html :bottom, :vehicle_list, :partial => '/users/vehicle', :object => @vehicle
+
+page << "$('vehicle_count').value = #{@vehicle.position}; Event.observe('vehicle[#{@vehicle.position}][make]', 'click', selectedMake);"

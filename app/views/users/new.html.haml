@@ -1,0 +1,22 @@
+- javascript 'jquery', 'vehicles'
+
+:javascript
+  removeCarForms = true;
+
+#top=render :partial => "shared/header", :locals => { :title => '', :subtitle => (@grouping.prefix == 'uptown' ? '' : 'Your Profile')} 
+#main
+
+  - if @grouping.prefix == "uptown"
+    #uptown_new_user_note
+      Welcome Uptown Residents! Fill out this quick profile and we’ll
+      set you up with a household dashboard where you can track your
+      progress on your computer or mobile phone. Click
+      =link_to "here", learn_more_path
+      to learn more about GoLo.
+
+  #profile_form.clearfix
+    - form_for @user do |form|
+      = render :partial => 'form', :object => form
+      = render :partial => 'terms', :locals=>{:form => form}
+
+      = image_submit_tag 'sign_in.png', :class => 'signin_button'

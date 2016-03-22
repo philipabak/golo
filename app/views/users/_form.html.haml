@@ -1,0 +1,93 @@
+- content_for :jstemplates do
+  = "var vehicle='#{generate_template(form, :vehicles)}'"
+
+~# .errorExplanation= form.error_messages
+- unless @user.errors.empty?
+  .form_error_main
+    Oops! We encountered some errors while updating your profile.<br/>
+    Please see below for the form elements that need to be changed.
+
+.profile_step 1
+.formsection
+  - if @grouping.prefix == "uptown"
+    %p
+      %span.major 
+        Which building do you live in?
+        .form_input.clearfix
+        = form.label :address, "Uptown Address"
+        = form.select :address, ["The William", "The Telegraph", "The Thomas Berkeley"]
+        = form.hidden_field :state, :value => "CA"
+        = form.hidden_field :postal_code, :value => "94612"
+  - else
+    %p
+      %span.major 
+        What is your home address?
+        .form_input.clearfix
+          = form.label :address, 'Address'
+          = form.text_field :address
+          = error_message_on @user, :address, :css_class => "form_error"
+        .form_input.clearfix
+          = form.label :state, 'State'
+          = form.select :state, state_options(@user)
+          = error_message_on @user, :state, :css_class => "form_error"
+        .form_input.clearfix
+          = form.label :postal_code, 'Zip code'
+          = form.text_field :postal_code
+          = error_message_on @user, :postal_code, :css_class => "form_error"
+
+.profile_step 2
+.formsection
+  .major Create an account:
+
+  #how_will_info_be_used.rollover
+    %a
+      How will my information be used?
+      %span
+        GoLo will not share your information with any other group,
+        company, City, or organization. We use your information to
+        set up a personalized account for you and periodically contact
+        you to remind you to enter odometer readings or with other
+        specific GoLo information. Nothing else - we promise.
+
+  .form_input.clearfix
+    = form.label :email, 'Email address'
+    = form.text_field :email
+    = error_message_on @user, :email, :css_class => "form_error"
+  .form_input.clearfix
+    = form.label :username, 'User name'
+    = form.text_field :username
+    = error_message_on @user, :username, :css_class => "form_error"
+  .form_input.clearfix
+    - if form.object.new_record?
+      = form.label :password, "Password<br> (at least 6 characters)"
+    - else
+      = form.label :password, "Password<br> (Leave blank to not change)"
+    = form.password_field :password
+    = error_message_on @user, :password, :css_class => "form_error"
+    #user_password_warning.warning Password must be at least 6 characters long.
+  .form_input.clearfix
+    - if form.object.new_record?
+      = form.label :password_confirmation, 'Verify password'
+    - else
+      = form.label :password_confirmation, 'Verify password <br> (Leave blank to not change)'
+    = form.password_field :password_confirmation
+    = error_message_on @user, :password_confirmation, :css_class => "form_error"
+    #user_password_confirmation_warning.warning Passwords do not match.
+
+.profile_step 3
+.formsection
+  .major Enter household driving data:
+  %p
+    = form.label :driver_count, 'How many drivers in your household?'
+    = form.text_field :driver_count, :size => 2
+    = error_message_on @user, :password_confirmation, :css_class => "form_error"
+
+.formsection.vehiclewrapper
+  #vehicles
+    .white What kind of car(s) do you drive?
+    %p (List each car in your household.)
+    %ol#v_list
+      - form.fields_for :vehicles do |vehicle_form|
+        = render :partial => 'vehicle', :locals => {:f => vehicle_form}
+
+  = link_to 'add another car', '#vehicle', :class => 'add_nested_item', :rel => 'v_list'

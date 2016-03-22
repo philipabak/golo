@@ -1,0 +1,13 @@
+- javascript 'jquery', 'vehicles'
+
+:javascript
+  removeCarForms = false;
+
+#top=render :partial => "shared/header", :locals => { :title => 'Beta', :subtitle => 'Your Profile'} 
+#main
+
+  #profile_form.clearfix
+    - form_for @user, :url => {:action => 'update'} do |form|
+      = render :partial => 'form', :object => form
+
+      = form.submit 'Update profile', :class => 'button'

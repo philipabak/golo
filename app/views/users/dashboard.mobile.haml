@@ -1,0 +1,52 @@
+#top
+  %h2 Enter your odometer reading:
+  - form_tag '/users/create_odometer_readings' do	
+    - current_user.vehicles.each do |vehicle|
+      .form_line
+        %label.secondary{:for => 'odometer_reading[mileage][]'}
+          = vehicle.short_name
+        = text_field_tag 'odometer_reading[mileage][]', nil, :size => 7, :class => "odo_entry"
+    = submit_tag 'Update Readings', :class => 'button', :id => 'odometer_button'
+    %br
+
+#main
+  #stats.clearfix
+    #centeringcontainer
+      %h2{:style => "text-align: center;"} #{current_user.title_possessive} household
+
+      #rating
+        =commafy @weekly_household_mileage
+        miles/week
+        - if @baseline_percentage
+          - if @baseline_percentage > 0
+            .baseline.worse= "#{@weekly_household_mileage - current_user.initial_weekly_mileage} MILES/WEEK (#{@baseline_percentage}%) ABOVE BASELINE"
+            = image_tag 'sad.png'
+          - elsif @baseline_percentage < 0
+            .baseline.better= "#{current_user.initial_weekly_mileage - @weekly_household_mileage} MILES/WEEK (#{@baseline_percentage.abs}%) BELOW BASELINE"
+            = image_tag 'happy.png'
+          - else
+            .baseline.no_change Same as baseline
+            = image_tag 'meh.png'
+
+      #chartstats
+        %ul
+          %li.data{:style => "background-image:url('/images/data_miles.png')"}
+            .recessed= commafy @miles_reduced_total
+          %li.label miles reduced
+          %li.data{:style => "background-image:url('/images/data_co2.png')"}
+            .recessed= commafy @co2_reduced_total
+          %li.label lbs. of Co2 reduced
+          %li.data{:style => "background-image:url('/images/data_pollutants.png')"}
+            .recessed= commafy @pollutants_reduced_total
+          %li.label lbs. of air Pollutants reduced
+          %li.data{:style => "background-image:url('/images/data_gallons.png')"}
+            .recessed= commafy @gallons_reduced_total
+          %li.label Gallons of gas saved
+          %li.data{:style => "background-image:url('/images/data_dollars.png')"}
+            .recessed= commafy @dollars_reduced_total
+          %li.label Dollars saved on gas
+
+:javascript
+  $(document).ready(function() {
+    $(".odo_entry").get(0).focus();
+  });
